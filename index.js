@@ -7,6 +7,7 @@ function getSlug(str) {
 
 module.exports = function ({ total } = { total: process.env.NODE_ENV !== 'production' }) {
     return function * (next) {
+        const ctx = this;
         // attaching timings object to state
         ctx.state.timings = {
             all: new Map(),

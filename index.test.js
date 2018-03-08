@@ -32,48 +32,48 @@ router.get('/badslug', function* () {
   this.state.timings.stopSpan(slug);
 })
 app.use(router.routes());
+app.listen(3000);
 
+// describe('normal requests', () => {
+//   let server;
+//   beforeAll(() => {
+//     server = app.listen();
+//   });
 
-describe('normal requests', () => {
-  let server;
-  beforeAll(() => {
-    server = app.listen();
-  });
+//   afterAll(() => {
+//     server.close();
+//   });
 
-  afterAll(() => {
-    server.close();
-  });
-
-  test('should return Server-Timing with total in header', function * () {
-    yield request(server)
-      .get('/')
-      .expect('Server-Timing', /total/)
-      .expect(200)
-  })
+//   test('should return Server-Timing with total in header', function * () {
+//     yield request(server)
+//       .get('/')
+//       .expect('Server-Timing', /total/)
+//       .expect(200)
+//   })
     
 
-  test('should return Server-Timing with two metrics and description', function* () {
-    yield request(server)
-    .get('/metric')
-    .expect('Server-Timing', /total/)
-    .expect('Server-Timing', /Another 1s task/)
-    .expect(200)
-  });
+//   test('should return Server-Timing with two metrics and description', function* () {
+//     yield request(server)
+//     .get('/metric')
+//     .expect('Server-Timing', /total/)
+//     .expect('Server-Timing', /Another 1s task/)
+//     .expect(200)
+//   });
 
-  test('should create correct slugs for Server-Timing metrics', function* () {
-    yield request(server)
-      .get('/badslug')
-      .expect('Server-Timing', /total/)
-      .expect('Server-Timing', /This's staff To be Converted to slug/)
-      .expect('Server-Timing', /thiss-staff-to-be-converted-to-slug/)
-      .expect(200)
-  });
+//   test('should create correct slugs for Server-Timing metrics', function* () {
+//     yield request(server)
+//       .get('/badslug')
+//       .expect('Server-Timing', /total/)
+//       .expect('Server-Timing', /This's staff To be Converted to slug/)
+//       .expect('Server-Timing', /thiss-staff-to-be-converted-to-slug/)
+//       .expect(200)
+//   });
     
 
-  test('should return time in seconds Server-Timing metrics', function* () {
-    yield request(server)
-      .get('/')
-      .expect('Server-Timing', /total;dur=1\./)
-      .expect(200)
-    });
-});
+//   test('should return time in seconds Server-Timing metrics', function* () {
+//     yield request(server)
+//       .get('/')
+//       .expect('Server-Timing', /total;dur=1\./)
+//       .expect(200)
+//     });
+// });
