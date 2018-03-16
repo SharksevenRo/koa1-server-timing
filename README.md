@@ -29,7 +29,7 @@ this.state.timings.stopSpan('A Task description' /* or 'taskSlug' or return from
 ## Example
 
 ```js
-const timings = require('koa-server-timing');
+const timings = require('koa1-server-timing');
 const koa = require('koa');
 const db = require('./mongoose');
 const app = koa();
