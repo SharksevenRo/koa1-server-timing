@@ -1,6 +1,6 @@
 {
   "name": "koa1-server-timing",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Koa1 Server Timinig header generation middleware",
   "main": "index.js",
   "scripts": {
